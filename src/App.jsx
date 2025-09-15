@@ -1,34 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { Home, BarChart3, Briefcase, Info } from 'lucide-react'
 import './App.css'
+import Route1 from './pages/Route1'
+import Route2 from './pages/Route2'
+import Route3 from './pages/Route3'
+import Route4 from './pages/Route4'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app">
+        <nav className="nav">
+          <Link to="/route1" className="nav-link">
+            <Home size={20} />
+            Route 1
+          </Link>
+          <Link to="/route2" className="nav-link">
+            <BarChart3 size={20} />
+            Route 2
+          </Link>
+          <Link to="/route3" className="nav-link">
+            <Briefcase size={20} />
+            Route 3
+          </Link>
+          <Link to="/route4" className="nav-link">
+            <Info size={20} />
+            Route 4
+          </Link>
+        </nav>
+
+        <main className="main">
+          <Routes>
+            <Route path="/route1" element={<Route1 />} />
+            <Route path="/route2" element={<Route2 />} />
+            <Route path="/route3" element={<Route3 />} />
+            <Route path="/route4" element={<Route4 />} />
+          </Routes>
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </Router>
   )
 }
 
