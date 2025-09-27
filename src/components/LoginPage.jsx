@@ -15,6 +15,9 @@
  * - Supports both login and signup flows
  * - Handles authentication state changes automatically
  */
+import './LoginPage.css'; //This is used to import the CSS file for styling the LoginPage component and the CSS page should be created in the same folder as the jsx document
+import Joblyticslogo from '../assets/Joblyticslogo.svg';
+
 
 import { useAuth } from '../context/AuthContext'
 import { LogIn, UserPlus, Shield, Zap } from 'lucide-react'
@@ -69,6 +72,8 @@ const LoginPage = () => {
             </div>
             <h3>Sign Up</h3>
             <p>Create a new account</p>
+
+
             <button 
               onClick={signup}             // Initiates OAuth signup flow
               className="auth-btn secondary"
