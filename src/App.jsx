@@ -48,6 +48,10 @@ function App() {
             <nav className="nav">
               {/* Navigation links to protected routes */}
               <div className="nav-links">
+                  <Link to="/" className="nav-link">
+                  <Briefcase size={20} />
+                  Joblytics
+                </Link>
                 <Link to="/route1" className="nav-link">
                   <Home size={20} />
                   Route 1
