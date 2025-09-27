@@ -1,0 +1,74 @@
+mutation SeedData @auth(level: USER) {
+  user_upsertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      companyName: "Acme Corp",
+      createdAt: "2024-01-01T00:00:00Z",
+      displayName: "John Doe",
+      email: "john.doe@example.com",
+      passwordHash: "somehash",
+      userType: "employer"
+    },
+    {
+      id: "661f9511-f3ab-52e5-b827-557766551111",
+      companyName: "Beta Inc",
+      createdAt: "2024-02-01T00:00:00Z",
+      displayName: "Jane Smith",
+      email: "jane.smith@example.com",
+      passwordHash: "anotherhash",
+      userType: "jobseeker"
+    }
+  ])
+  skill_upsertMany(data: [
+    {
+      id: "772aa622-04bc-63f6-c938-668877662222",
+      name: "JavaScript"
+    },
+    {
+      id: "883bb733-15cd-7407-da49-779988773333",
+      name: "Python"
+    }
+  ])
+  jobPosting_upsertMany(data: [
+    {
+      id: "994cc844-26de-8518-eb5a-880099884444",
+      employerId: "550e8400-e29b-41d4-a716-446655440000",
+      createdAt: "2024-03-01T00:00:00Z",
+      description: "Looking for a JavaScript developer",
+      employmentType: "full-time",
+      location: "New York",
+      title: "JavaScript Developer",
+      status: "open"
+    },
+    {
+      id: "aa5dd955-37ef-9629-fc6b-9911aa995555",
+      employerId: "550e8400-e29b-41d4-a716-446655440000",
+      createdAt: "2024-03-15T00:00:00Z",
+      description: "Hiring a Python engineer",
+      employmentType: "contract",
+      location: "San Francisco",
+      title: "Python Engineer",
+      status: "closed"
+    }
+  ])
+  jobPostingSkill_upsertMany(data: [
+    {
+      jobPostingId: "994cc844-26de-8518-eb5a-880099884444",
+      skillId: "772aa622-04bc-63f6-c938-668877662222"
+    },
+    {
+      jobPostingId: "aa5dd955-37ef-9629-fc6b-9911aa995555",
+      skillId: "883bb733-15cd-7407-da49-779988773333"
+    }
+  ])
+  userSkill_upsertMany(data: [
+    {
+      userId: "661f9511-f3ab-52e5-b827-557766551111",
+      skillId: "772aa622-04bc-63f6-c938-668877662222"
+    },
+    {
+      userId: "661f9511-f3ab-52e5-b827-557766551111",
+      skillId: "883bb733-15cd-7407-da49-779988773333"
+    }
+  ])
+}

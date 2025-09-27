@@ -1,0 +1,48 @@
+mutation AddSkill ($name: String!) @auth(level: USER) {
+  skill_insert(data: {name: $name})
+}
+
+query ListJobPostings @auth(level: PUBLIC) {
+  jobPostings {
+    id
+    title
+    description
+    location
+    salaryRange
+  }
+}
+
+query GetUserSkills($userId: UUID!) @auth(level: USER) {
+  userSkills(where: {userId: {eq: $userId}}) {
+    skill {
+      id
+      name
+    }
+  }
+}
+
+mutation CreateJobPosting(
+  $employerId: UUID!
+  $title: String!
+  $description: String!
+  $employmentType: String!
+  $location: String!
+  $requirements: String
+  $responsibilities: String
+  $salaryRange: String
+  $status: String!
+) @auth(level: USER) {
+  jobPosting_insert(
+    data: {
+      employerId: $employerId
+      title: $title
+      description: $description
+      employmentType: $employmentType
+      location: $location
+      requirements: $requirements
+      responsibilities: $responsibilities
+      salaryRange: $salaryRange
+      status: $status
+    }
+  )
+}

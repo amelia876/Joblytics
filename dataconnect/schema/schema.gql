@@ -1,0 +1,44 @@
+type User @table {
+  email: String!
+  passwordHash: String!
+  userType: String!
+  createdAt: Timestamp!
+  displayName: String
+  companyName: String
+  resume: String
+}
+
+type JobPosting @table {
+  title: String!
+  description: String!
+  location: String!
+  employmentType: String!
+  createdAt: Timestamp!
+  status: String!
+  salaryRange: String
+  requirements: String
+  responsibilities: String
+  employer: User
+}
+
+type Application @table {
+  createdAt: Timestamp!
+  status: String!
+  coverLetter: String
+  jobSeeker: User
+  jobPosting: JobPosting
+}
+
+type Skill @table {
+  name: String!
+}
+
+type UserSkill @table(key: ["user", "skill"]) {
+  user: User!
+  skill: Skill!
+}
+
+type JobPostingSkill @table(key: ["jobPosting", "skill"]) {
+  jobPosting: JobPosting!
+  skill: Skill!
+}
