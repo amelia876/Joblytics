@@ -28,6 +28,7 @@ import Route1 from './pages/Route1'
 import Route2 from './pages/Route2'
 import Route3 from './pages/Route3'
 import Route4 from './pages/Route4'
+import LandingPage from './pages/LandingPage'
 
 function App() {
   return (
@@ -83,6 +84,7 @@ function App() {
               <Routes>
                 {/* All routes are wrapped with ProtectedRoute to require authentication */}
                 {/* If user is not authenticated, they'll see the login page instead */}
+                <Route path="/" element={<LandingPage />} />
                 
                 <Route path="/route1" element={
                   <ProtectedRoute>
